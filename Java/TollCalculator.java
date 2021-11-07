@@ -55,8 +55,15 @@ public class TollCalculator {
     if (hour == 6 && minute >= 0 && minute <= 29) return 8;
     else if (hour == 6 && minute >= 30 && minute <= 59) return 13;
     else if (hour == 7 && minute >= 0 && minute <= 59) return 18;
-    else if (hour == 8 && minute >= 0 && minute <= 29) return 13;
-    else if (hour >= 8 && hour <= 14 && minute >= 30 && minute <= 59) return 8;
+    // if the time is within 8 and 14
+    else if (hour >= 8 && hour <= 14) { 
+      // if the time is before 8:30 
+      if (hour == 8 && minute <= 29) { 
+        return 13;
+      } else {
+        return 8;
+      }
+    }
     else if (hour == 15 && minute >= 0 && minute <= 29) return 13;
     else if (hour == 15 && minute >= 0 || hour == 16 && minute <= 59) return 18;
     else if (hour == 17 && minute >= 0 && minute <= 59) return 13;
