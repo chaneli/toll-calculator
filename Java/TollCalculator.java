@@ -74,15 +74,12 @@ public class TollCalculator {
   private Boolean isTollFreeDate(Date date) {
     Calendar calendar = GregorianCalendar.getInstance();
     calendar.setTime(date);
-    int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
 
     int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
     if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) return true;
-
-    if (year == 2013) {
-      if (month == Calendar.JANUARY && day == 1 ||
+    if (month == Calendar.JANUARY && day == 1 ||
           month == Calendar.MARCH && (day == 28 || day == 29) ||
           month == Calendar.APRIL && (day == 1 || day == 30) ||
           month == Calendar.MAY && (day == 1 || day == 8 || day == 9) ||
@@ -92,7 +89,6 @@ public class TollCalculator {
           month == Calendar.DECEMBER && (day == 24 || day == 25 || day == 26 || day == 31)) {
         return true;
       }
-    }
     return false;
   }
 
